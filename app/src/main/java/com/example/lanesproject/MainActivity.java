@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -26,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     private ImageView leftBtn;
     private ImageView rightBtn;
     private ImageView spaceship;
+
+    private ImageView[] spaceships;
+
+
     private ImageView[] gameEngines;
 
     @Override
@@ -86,6 +91,11 @@ public class MainActivity extends AppCompatActivity {
         leftBtn = (ImageView) findViewById(R.id.leftBtn);
         rightBtn = (ImageView) findViewById(R.id.rightBtn);
         spaceship = (ImageView) findViewById(R.id.spaceship);
+        spaceships = new ImageView[] {
+                (ImageView) findViewById(R.id.spaceshipLeft),
+                spaceship,
+                (ImageView) findViewById(R.id.spaceshipRight)
+        };
 
         asteroids = new ImageView[][]{
                 {(ImageView) findViewById(R.id.Asteroid11),(ImageView) findViewById(R.id.Asteroid12),(ImageView) findViewById(R.id.Asteroid13) },
@@ -105,8 +115,19 @@ public class MainActivity extends AppCompatActivity {
     }
     private void moveSpaceShip(int toward){
         gameManager.changeLocation(toward);
-        this.spaceshipLeft = gameManager.getLocation() * 350;
-        spaceship.setTranslationX(this.spaceshipLeft);
+
+        // I would like to have the movement by transitioning
+        // this.spaceshipLeft = gameManager.getLocation() * 350;
+        // spaceships[1].setTranslationX(this.spaceshipLeft);
+        // but since we have not learned it then
+
+        int index = gameManager.getLocation() + 1;
+        for(int i = 0 ; i < 3; i ++ ){
+            if (i == index)
+                this.spaceships[i].setVisibility(View.VISIBLE);
+            else
+                this.spaceships[i].setVisibility(View.INVISIBLE);
+        }
 
         checkForHit();
     }
