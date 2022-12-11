@@ -10,13 +10,17 @@ public class GameManager {
     private int lives = 3;
 
     private int[][] asteroidsMat = {
-            {0,0,0},
-            {0,0,0},
-            {0,0,0},
-            {0,0,0},
-            {0,0,0},
-            {0,0,0},
-            {0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
+            {0,0,0,0,0},
     };
 
 
@@ -24,11 +28,11 @@ public class GameManager {
     }
 
     public boolean isHit() {
-        boolean hitLeft = this.location == -1 && this.asteroidsMat[6][0] == 1;
-        boolean hitRight = this.location == 1 && this.asteroidsMat[6][2] == 1;
-        boolean hitCenter = this.location == 0 && this.asteroidsMat[6][1] == 1;
-
-        return hitLeft || hitCenter || hitRight;
+        boolean hit = false;
+        for(int i = 0, j = -2; i < this.asteroidsMat[0].length; i++, j++){
+            hit = hit || (this.location == j && this.asteroidsMat[this.asteroidsMat.length-1][i] == 1);
+        }
+        return hit;
     }
 
     public int getLives() { return this.lives; }
@@ -38,8 +42,8 @@ public class GameManager {
     public boolean isGameLost() { return this.lives == 0; }
 
     public void changeLocation(int toward) {
-        if ( location == -1 && toward == -1 ) return;
-        if ( location == 1 && toward == 1 ) return;
+        if ( location == -2 && toward == -1 ) return;
+        if ( location == 2 && toward == 1 ) return;
         location += toward;
     }
 
@@ -55,13 +59,13 @@ public class GameManager {
 
     public void makeProgress(){
         for (int i = this.asteroidsMat.length - 1; i > 0; i--) {
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < asteroidsMat[0].length; j++) {
                 this.asteroidsMat[i][j] = this.asteroidsMat[i-1][j];
             }
         }
-        this.asteroidsMat[0][0] = 0;
-        this.asteroidsMat[0][1] = 0;
-        this.asteroidsMat[0][2] = 0;
+        for(int i = 0 ; i < asteroidsMat[0].length ; i ++ ){
+            this.asteroidsMat[0][i] = 0;
+        }
 
         if ( this.currentCycle == this.SPAWN_CYCLE ) {
             this.currentCycle = 0;
@@ -69,7 +73,7 @@ public class GameManager {
     }
     public boolean hasSpawn() { return this.currentCycle == 0; }
     public void spawnAsteroid(){
-        int laneNum = (int)(Math.random() * 3);
+        int laneNum = (int)(Math.random() * asteroidsMat[0].length);
         this.asteroidsMat[0][laneNum] = 1;
     }
 
@@ -78,8 +82,8 @@ public class GameManager {
     }
 
     public void printMat(){
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < asteroidsMat.length; i++) {
+            for (int j = 0; j < asteroidsMat[0].length; j++) {
                 System.out.print(this.asteroidsMat[i][j] + " ");
             }
             System.out.println();

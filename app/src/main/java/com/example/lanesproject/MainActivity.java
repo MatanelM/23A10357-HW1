@@ -92,19 +92,25 @@ public class MainActivity extends AppCompatActivity {
         rightBtn = (ImageView) findViewById(R.id.rightBtn);
         spaceship = (ImageView) findViewById(R.id.spaceship);
         spaceships = new ImageView[] {
+                (ImageView) findViewById(R.id.spaceshipLeftLeft),
                 (ImageView) findViewById(R.id.spaceshipLeft),
                 spaceship,
-                (ImageView) findViewById(R.id.spaceshipRight)
+                (ImageView) findViewById(R.id.spaceshipRight),
+                (ImageView) findViewById(R.id.spaceshipRightRight)
         };
 
         asteroids = new ImageView[][]{
-                {(ImageView) findViewById(R.id.Asteroid11),(ImageView) findViewById(R.id.Asteroid12),(ImageView) findViewById(R.id.Asteroid13) },
-                {(ImageView) findViewById(R.id.Asteroid21),(ImageView) findViewById(R.id.Asteroid22),(ImageView) findViewById(R.id.Asteroid23) },
-                {(ImageView) findViewById(R.id.Asteroid31),(ImageView) findViewById(R.id.Asteroid32),(ImageView) findViewById(R.id.Asteroid33) },
-                {(ImageView) findViewById(R.id.Asteroid41),(ImageView) findViewById(R.id.Asteroid42),(ImageView) findViewById(R.id.Asteroid43) },
-                {(ImageView) findViewById(R.id.Asteroid51),(ImageView) findViewById(R.id.Asteroid52),(ImageView) findViewById(R.id.Asteroid53) },
-                {(ImageView) findViewById(R.id.Asteroid61),(ImageView) findViewById(R.id.Asteroid62),(ImageView) findViewById(R.id.Asteroid63) },
-                {(ImageView) findViewById(R.id.Asteroid71),(ImageView) findViewById(R.id.Asteroid72),(ImageView) findViewById(R.id.Asteroid73) },
+                {(ImageView) findViewById(R.id.Asteroid11),(ImageView) findViewById(R.id.Asteroid12),(ImageView) findViewById(R.id.Asteroid13),(ImageView) findViewById(R.id.Asteroid14),(ImageView) findViewById(R.id.Asteroid15) },
+                {(ImageView) findViewById(R.id.Asteroid21),(ImageView) findViewById(R.id.Asteroid22),(ImageView) findViewById(R.id.Asteroid23),(ImageView) findViewById(R.id.Asteroid24),(ImageView) findViewById(R.id.Asteroid25) },
+                {(ImageView) findViewById(R.id.Asteroid31),(ImageView) findViewById(R.id.Asteroid32),(ImageView) findViewById(R.id.Asteroid33),(ImageView) findViewById(R.id.Asteroid34),(ImageView) findViewById(R.id.Asteroid35) },
+                {(ImageView) findViewById(R.id.Asteroid41),(ImageView) findViewById(R.id.Asteroid42),(ImageView) findViewById(R.id.Asteroid43),(ImageView) findViewById(R.id.Asteroid44),(ImageView) findViewById(R.id.Asteroid45) },
+                {(ImageView) findViewById(R.id.Asteroid51),(ImageView) findViewById(R.id.Asteroid52),(ImageView) findViewById(R.id.Asteroid53),(ImageView) findViewById(R.id.Asteroid54),(ImageView) findViewById(R.id.Asteroid55) },
+                {(ImageView) findViewById(R.id.Asteroid61),(ImageView) findViewById(R.id.Asteroid62),(ImageView) findViewById(R.id.Asteroid63),(ImageView) findViewById(R.id.Asteroid64),(ImageView) findViewById(R.id.Asteroid65) },
+                {(ImageView) findViewById(R.id.Asteroid71),(ImageView) findViewById(R.id.Asteroid72),(ImageView) findViewById(R.id.Asteroid73),(ImageView) findViewById(R.id.Asteroid74),(ImageView) findViewById(R.id.Asteroid75) },
+                {(ImageView) findViewById(R.id.Asteroid81),(ImageView) findViewById(R.id.Asteroid82),(ImageView) findViewById(R.id.Asteroid83),(ImageView) findViewById(R.id.Asteroid84),(ImageView) findViewById(R.id.Asteroid85) },
+                {(ImageView) findViewById(R.id.Asteroid91),(ImageView) findViewById(R.id.Asteroid92),(ImageView) findViewById(R.id.Asteroid93),(ImageView) findViewById(R.id.Asteroid94),(ImageView) findViewById(R.id.Asteroid95) },
+                {(ImageView) findViewById(R.id.Asteroid101),(ImageView) findViewById(R.id.Asteroid102),(ImageView) findViewById(R.id.Asteroid103),(ImageView) findViewById(R.id.Asteroid104),(ImageView) findViewById(R.id.Asteroid105) },
+                {(ImageView) findViewById(R.id.Asteroid111),(ImageView) findViewById(R.id.Asteroid112),(ImageView) findViewById(R.id.Asteroid113),(ImageView) findViewById(R.id.Asteroid114),(ImageView) findViewById(R.id.Asteroid115) },
         };
 
         gameEngines = new ImageView[]{
@@ -121,8 +127,8 @@ public class MainActivity extends AppCompatActivity {
         // spaceships[1].setTranslationX(this.spaceshipLeft);
         // but since we have not learned it then
 
-        int index = gameManager.getLocation() + 1;
-        for(int i = 0 ; i < 3; i ++ ){
+        int index = gameManager.getLocation() + 2;
+        for(int i = 0 ; i < gameManager.getMat()[0].length; i ++ ){
             if (i == index)
                 this.spaceships[i].setVisibility(View.VISIBLE);
             else
@@ -144,8 +150,8 @@ public class MainActivity extends AppCompatActivity {
     private void updateScreen(){
 //        this.gameManager.printMat();
         int[][] mat = gameManager.getMat();
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[0].length; j++) {
                 ImageView asteroid = this.asteroids[i][j];
                 boolean isVisible = asteroid.getVisibility() == asteroid.VISIBLE;
                 boolean isVisibleOnMat = mat[i][j] == 1;

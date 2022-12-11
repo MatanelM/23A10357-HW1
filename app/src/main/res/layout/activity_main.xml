@@ -50,99 +50,209 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="104dp"
+        android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
-
         <ImageView
             android:id="@+id/Asteroid11"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
-
         <ImageView
             android:id="@+id/Asteroid12"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
-
         <ImageView
             android:id="@+id/Asteroid13"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
-
+        <ImageView
+            android:id="@+id/Asteroid14"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid15"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="104dp"
+        android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165">
+        app:layout_constraintVertical_bias="0.099">
 
         <ImageView
             android:id="@+id/Asteroid21"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
         <ImageView
             android:id="@+id/Asteroid22"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
         <ImageView
             android:id="@+id/Asteroid23"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid24"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid25"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="104dp"
+        android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.331">
-
+        app:layout_constraintVertical_bias="0.198">
         <ImageView
             android:id="@+id/Asteroid31"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
-
         <ImageView
             android:id="@+id/Asteroid32"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
-
         <ImageView
             android:id="@+id/Asteroid33"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid34"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid35"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.29700000000000004">
+        <ImageView
+            android:id="@+id/Asteroid41"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid42"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid43"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid44"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid45"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.396">
+        <ImageView
+            android:id="@+id/Asteroid51"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid52"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid53"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid54"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+        <ImageView
+            android:id="@+id/Asteroid55"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
     </LinearLayout>
@@ -150,32 +260,93 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="104dp"
+        android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497">
+        app:layout_constraintVertical_bias="0.495">
 
         <ImageView
-            android:id="@+id/Asteroid41"
+            android:id="@+id/Asteroid61"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
         <ImageView
-            android:id="@+id/Asteroid42"
+            android:id="@+id/Asteroid62"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
         <ImageView
-            android:id="@+id/Asteroid43"
+            android:id="@+id/Asteroid63"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid64"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid65"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5940000000000001">
+
+        <ImageView
+            android:id="@+id/Asteroid71"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid72"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid73"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid74"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid75"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
     </LinearLayout>
@@ -183,109 +354,197 @@
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="104dp"
+        android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663">
+        app:layout_constraintVertical_bias="0.6930000000000001">
 
         <ImageView
-            android:id="@+id/Asteroid51"
+            android:id="@+id/Asteroid81"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
         <ImageView
-            android:id="@+id/Asteroid52"
+            android:id="@+id/Asteroid82"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
         <ImageView
-            android:id="@+id/Asteroid53"
+            android:id="@+id/Asteroid83"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid84"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid85"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
-        android:layout_height="104dp"
+        android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.829">
+        app:layout_constraintVertical_bias="0.792">
 
         <ImageView
-            android:id="@+id/Asteroid61"
+            android:id="@+id/Asteroid91"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
         <ImageView
-            android:id="@+id/Asteroid62"
+            android:id="@+id/Asteroid92"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
         <ImageView
-            android:id="@+id/Asteroid63"
+            android:id="@+id/Asteroid93"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
-            android:backgroundTint="#2B2B2B"
-            android:backgroundTintMode="multiply"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid94"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid95"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
-        android:layout_height="104dp"
+        android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.995">
+        app:layout_constraintVertical_bias="0.891">
 
         <ImageView
-            android:id="@+id/Asteroid71"
+            android:id="@+id/Asteroid101"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
         <ImageView
-            android:id="@+id/Asteroid72"
+            android:id="@+id/Asteroid102"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
         <ImageView
-            android:id="@+id/Asteroid73"
+            android:id="@+id/Asteroid103"
             android:layout_width="134dp"
-            android:layout_height="104dp"
+            android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
 
+        <ImageView
+            android:id="@+id/Asteroid104"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid105"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.99">
+
+        <ImageView
+            android:id="@+id/Asteroid111"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid112"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid113"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid114"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
+
+        <ImageView
+            android:id="@+id/Asteroid115"
+            android:layout_width="134dp"
+            android:layout_height="66dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/asteroid" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="104dp"
         android:elevation="40dp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/leftBtn"
@@ -307,14 +566,24 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="match_parent"
-        android:layout_height="104dp"
+        android:layout_height="66dp"
         android:layout_weight="1"
         android:elevation="20dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/spaceshipLeftLeft"
+            android:layout_width="296dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="invisible"
+
+            app:srcCompat="@drawable/ic_spaceship" />
 
         <ImageView
             android:id="@+id/spaceshipLeft"
@@ -333,6 +602,14 @@
 
         <ImageView
             android:id="@+id/spaceshipRight"
+            android:layout_width="296dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/ic_spaceship" />
+
+        <ImageView
+            android:id="@+id/spaceshipRightRight"
             android:layout_width="296dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
