@@ -21,14 +21,12 @@ import com.example.lanesproject.managers.GameManager;
 import com.example.lanesproject.managers.GsonManager;
 import com.example.lanesproject.managers.LocationManager;
 import com.example.lanesproject.managers.SoundManager;
-import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String SP_KEY_GAME_MANAGER = "SP_KEY_GAME_MANAGER";
 
     private GameManager gameManager;
-    private int spaceshipLeft =0;
     boolean isHitThisTime = false;
 
     private ImageView[][] asteroids;
@@ -85,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
             vibrate();
             toast("WE GOT HIT");
             isHitThisTime = true;
-
 
             if  (this.gameManager.isGameLost()){
                 this.gameThread.interrupt();
@@ -248,13 +245,14 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // resume thread
         // reset
-
 //        String gameManagerJson = GsonManager.getInstance().toGson(this.gameManager);
 //        GsonManager.getInstance().putString(SP_KEY_GAME_MANAGER, "");
         String gameManagerString = GsonManager.getInstance().getString(SP_KEY_GAME_MANAGER, "");
         if ( gameManagerString.equals("")) return;
         GameManager tempGM = GsonManager.getInstance().fromJson(gameManagerString, GameManager.class);
-
+        if ( this.gameManager != null ){
+            this.gameManager.sethighScore(tempGM.gethighScore());
+        }
         if (!tempGM.isPaused())return;
         this.gameManager = tempGM;
         if ( this.gameThread == null ){

@@ -12,7 +12,6 @@ public class GsonManager {
     private static GsonManager instance = null;
     private SharedPreferences preferences;
 
-
     private GsonManager(Context context){
         preferences = context.getSharedPreferences(DB_FILE,Context.MODE_PRIVATE);
     }

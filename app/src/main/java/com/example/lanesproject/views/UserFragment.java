@@ -5,8 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.os.Debug;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +15,6 @@ import com.example.lanesproject.R;
 import com.example.lanesproject.callbacks.CallBack_userProtocol;
 import com.example.lanesproject.entities.Player;
 import com.example.lanesproject.managers.GsonManager;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textview.MaterialTextView;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 public class UserFragment extends Fragment {
 
@@ -48,8 +41,6 @@ public class UserFragment extends Fragment {
     }
 
     private void updateScreen() {
-
-
         String[] highScoreStr = new String[]{
                 getActivity().getIntent().getExtras().getString("Player1"),
                 getActivity().getIntent().getExtras().getString("Player2"),

@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -29,7 +30,8 @@ public class LocationManager{
     private Double latitude = 0.0;
     private Double longitude = 0.0;
 
-    android.location.LocationManager location;
+    private android.location.LocationManager location;
+    private GoogleMap map;
 
     private LocationManager(Context context) {
         location = (android.location.LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
@@ -66,11 +68,17 @@ public class LocationManager{
         } else {
             this.latitude = 0.0;
             this.longitude = 0.0;
-
             System.out.println("LOCATION IS NULL, 0,0 values given");
         }
     }
 
+    public void setGoogleMap(GoogleMap map){
+        this.map = map;
+    }
+
+    public GoogleMap getGoogleMap(){
+        return this.map;
+    }
     public Double getLatitude(){
         return this.latitude;
     }

@@ -45,11 +45,10 @@ public class GameManager {
         for (int i = 0; i < 5; i++) {
             highScore.add(new Player("Hello", 0, 0.0, 0.0));
         }
-
     }
 
     public GameManager(){
-        // TODO - init from pref
+        // TODO - init from SP
     }
 
     public boolean isHit() {
