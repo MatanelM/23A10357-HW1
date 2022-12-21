@@ -4,14 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    tools:context=".MainActivity">
+    android:background="@drawable/stars"
+    tools:context=".activities.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
+        android:layout_width="211dp"
+        android:layout_height="62dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/home_border"
         android:elevation="20dp"
+        android:paddingTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -50,6 +55,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout10"
         android:layout_width="match_parent"
         android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,30 +64,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
+
         <ImageView
             android:id="@+id/Asteroid11"
             android:layout_width="134dp"
             android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
+
         <ImageView
             android:id="@+id/Asteroid12"
             android:layout_width="134dp"
             android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
+
         <ImageView
             android:id="@+id/Asteroid13"
             android:layout_width="134dp"
             android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
+
         <ImageView
             android:id="@+id/Asteroid14"
             android:layout_width="134dp"
             android:layout_height="66dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/asteroid" />
+
         <ImageView
             android:id="@+id/Asteroid15"
             android:layout_width="134dp"

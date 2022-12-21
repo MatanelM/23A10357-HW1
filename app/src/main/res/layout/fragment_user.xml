@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.UserFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="347dp"
+            android:layout_height="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <Button
+                android:id="@+id/Name1"
+                android:layout_width="185dp"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                android:shadowColor="#FAEEEE"
+                android:text="Hello"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/Score1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="0"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#FFFFFF"
+                android:textAlignment="viewEnd"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="347dp"
+            android:layout_height="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.244">
+            <Button
+                android:id="@+id/Name2"
+                android:layout_width="185dp"
+                android:layout_height="match_parent"
+                android:shadowColor="#FAEEEE"
+                android:background="#00FFFFFF"
+                android:text="Hello"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/Score2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="0"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#FFFFFF"
+                android:textAlignment="viewEnd"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="347dp"
+            android:layout_height="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.488">
+
+            <Button
+                android:id="@+id/Name3"
+                android:layout_width="185dp"
+                android:layout_height="match_parent"
+                android:shadowColor="#FAEEEE"
+                android:background="#00FFFFFF"
+                android:text="Hello"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/Score3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="0"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#FFFFFF"
+                android:textAlignment="viewEnd"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="347dp"
+            android:layout_height="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.732">
+
+            <Button
+                android:id="@+id/Name4"
+                android:layout_width="185dp"
+                android:layout_height="match_parent"
+                android:shadowColor="#FAEEEE"
+                android:background="#00FFFFFF"
+                android:text="Hello"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/Score4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="0"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#FFFFFF"
+                android:textAlignment="viewEnd"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="347dp"
+            android:layout_height="42dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.976">
+            <Button
+                android:id="@+id/Name5"
+                android:layout_width="185dp"
+                android:layout_height="match_parent"
+                android:background="#00FFFFFF"
+                android:shadowColor="#FAEEEE"
+                android:text="Hello"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/Score5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="0"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#FFFFFF"
+                android:textAlignment="viewEnd"
+                android:textSize="24sp" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -1,23 +1,31 @@
-package com.example.lanesproject;
+package com.example.lanesproject.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
-import android.media.Image;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.material.imageview.ShapeableImageView;
+import com.example.lanesproject.R;
+import com.example.lanesproject.entities.Player;
+import com.example.lanesproject.managers.GameManager;
+import com.example.lanesproject.managers.GsonManager;
+import com.example.lanesproject.managers.LocationManager;
+import com.example.lanesproject.managers.SoundManager;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String SP_KEY_GAME_MANAGER = "SP_KEY_GAME_MANAGER";
 
     private GameManager gameManager;
     private int spaceshipLeft =0;
@@ -30,36 +38,44 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView[] spaceships;
 
-
     private ImageView[] gameEngines;
-
+    final Handler handler = new Handler(Looper.myLooper());
+    private Runnable gameRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if ( gameManager == null || gameManager.isGameLost()) return;
+            isHitThisTime = false;
+            handler.postDelayed(this, gameManager.getDelay());
+            gameManager.makeProgress();
+            if ( gameManager.hasSpawn() )
+                gameManager.spawnAsteroid();
+            updateScreen();
+            checkForHit();
+        }
+    };
+    private String username;
+    private Thread gameThread;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
         initViews();
-        gameManager = new GameManager();
+
+        gameManager = new GameManager(getIntent().getExtras().getBoolean("isLevelEasy"));
         updateScreen();
-
-        final Handler handler = new Handler(Looper.myLooper());
-        Thread gameThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                isHitThisTime = false;
-                handler.postDelayed(this, gameManager.getDelay());
-                gameManager.makeProgress();
-                if ( gameManager.hasSpawn() )
-                    gameManager.spawnAsteroid();
-                updateScreen();
-                checkForHit();
-            }
-        });
+        this.username = getIntent().getExtras().getString("username");
+        this.gameThread = new Thread(gameRunnable);
         gameThread.run();
-
         updateScreen();
     }
+
+
+
     private void checkForHit() {
+        if ( gameManager.isHit()){
+            SoundManager.getInstance().makeSoundNotInLoop(this, R.raw.crash);
+        }
         if ( !this.isHitThisTime && gameManager.isHit()){
             gameManager.hitAsteroid();
             // also - remove 1 engine
@@ -69,6 +85,31 @@ public class MainActivity extends AppCompatActivity {
             vibrate();
             toast("WE GOT HIT");
             isHitThisTime = true;
+
+
+            if  (this.gameManager.isGameLost()){
+                this.gameThread.interrupt();
+                try {
+                    this.gameThread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                this.gameManager.setPaused(false);
+
+                Player player = new Player(
+                        this.username,
+                        this.gameManager.getScore(),
+                        LocationManager.getInstance().getLongitude(),
+                        LocationManager.getInstance().getLatitude()
+                );
+                if ( gameManager.isInHighScore(player)){
+                    this.gameManager.addToHighScore(player);
+                }
+                String gameManagerJson = GsonManager.getInstance().toGson(this.gameManager);
+                GsonManager.getInstance().putString(SP_KEY_GAME_MANAGER, gameManagerJson);
+
+                callScoreIntent();
+            }
         }
     }
 
@@ -119,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 (ImageView) findViewById(R.id.gameImgEngine3),
         };
     }
+
     private void moveSpaceShip(int toward){
         gameManager.changeLocation(toward);
 
@@ -149,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateScreen(){
 //        this.gameManager.printMat();
+        // update mat
         int[][] mat = gameManager.getMat();
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[0].length; j++) {
@@ -158,10 +201,77 @@ public class MainActivity extends AppCompatActivity {
                 if ( !isVisibleOnMat && isVisible || isVisibleOnMat && !isVisible){
                     if ( !isVisible ) asteroid.setVisibility(asteroid.VISIBLE);
                     else if ( isVisible ) asteroid.setVisibility(asteroid.INVISIBLE);
-
                 }
             }
         }
+    }
+    private void callScoreIntent() {
+        Intent intent = new Intent(this, ScoreActivity.class);
 
+        setIntentExtras(intent);
+
+        startActivity(intent);
+        finish();
+    }
+
+    private void setIntentExtras(Intent intent){
+        intent.putExtra("username", this.username);
+
+        for(int i = 0 ; i < 5 ; i ++ ){
+            intent.putExtra(String.format("Player%d", i+1), GsonManager.getInstance().toGson(this.gameManager.gethighScore().get(i)));
+        }
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        // pause thread
+        if ( !this.gameManager.isGameLost()){ // checks the cause of stopping - end game / pause
+            this.gameManager.setPaused(true);
+        }
+
+        String gameManagerJson = GsonManager.getInstance().toGson(this.gameManager);
+        GsonManager.getInstance().putString(SP_KEY_GAME_MANAGER, gameManagerJson);
+        this.gameManager = null;
+        this.gameThread.interrupt();
+        try {
+            this.gameThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.gameThread = null;
+        SoundManager.getInstance().stopMainSound();
+
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        // resume thread
+        // reset
+
+//        String gameManagerJson = GsonManager.getInstance().toGson(this.gameManager);
+//        GsonManager.getInstance().putString(SP_KEY_GAME_MANAGER, "");
+        String gameManagerString = GsonManager.getInstance().getString(SP_KEY_GAME_MANAGER, "");
+        if ( gameManagerString.equals("")) return;
+        GameManager tempGM = GsonManager.getInstance().fromJson(gameManagerString, GameManager.class);
+
+        if (!tempGM.isPaused())return;
+        this.gameManager = tempGM;
+        if ( this.gameThread == null ){
+            this.gameThread = new Thread(this.gameRunnable);
+            this.gameThread.run();
+            SoundManager.getInstance().startMainSound(this, R.raw.main);
+        }
+        Log.d("GameManager: ", this.gameManager.toString());
+
+        int index = gameManager.getLocation() + 2;
+        for(int i = 0 ; i < gameManager.getMat()[0].length; i ++ ){
+            if (i == index)
+                this.spaceships[i].setVisibility(View.VISIBLE);
+            else
+                this.spaceships[i].setVisibility(View.INVISIBLE);
+        }
+
+        updateScreen();
     }
 }

@@ -3,7 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/drawable/asteroid.xml" value="0.261" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/drawable/engine.xml" value="0.1" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/drawable/home_border.xml" value="0.1" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/drawable/ic_btn_menu.xml" value="0.1" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/drawable/ic_spaceship.xml" value="0.261" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/layout/activity_menu.xml" value="0.4540420819490587" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/layout/activity_score.xml" value="0.25" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/layout/fragment_location.xml" value="0.24728260869565216" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/layout/fragment_map.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/layout/fragment_user.xml" value="0.17395833333333333" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/layout/fragment_user2.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/MatanelM/AndroidStudioProjects/23A10357-HW1/app/src/main/res/layout/fragment_user_list.xml" value="0.17395833333333333" />
       </map>
     </option>
   </component>
