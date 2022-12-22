@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 @Override
                 public void stepY() {
-                    gameManager.speedUp(5);
+                    if ( gameManager != null)gameManager.speedUp(5);
                 }
             });
             // start motion sensor
@@ -265,8 +265,6 @@ public class MainActivity extends AppCompatActivity {
                     if ( !isVisible ) asteroid.setVisibility(asteroid.VISIBLE); // silence the code
                     else if ( isVisible ) asteroid.setVisibility(asteroid.INVISIBLE);
                 }
-
-
             }
         }
         ((TextView) findViewById(R.id.score)).setText("" + gameManager.getScore());
@@ -311,7 +309,6 @@ public class MainActivity extends AppCompatActivity {
         // stop the background running services
         SoundManager.getInstance().stopMainSound();
         if ( StepManager.getInstance() != null)StepManager.getInstance().stop();
-
     }
     @Override
     public void onResume(){

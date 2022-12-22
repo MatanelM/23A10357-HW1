@@ -43,6 +43,9 @@ public class GameManager {
         if ( !isLevelEasy ){
             MAX = 2;
             SPAWN_CYCLE = 2;
+        }else{
+            MAX = 1;
+            SPAWN_CYCLE = 3;
         }
         for (int i = 0; i < 5; i++) {
             highScore.add(new Player("Hello", 0, 0.0, 0.0));
