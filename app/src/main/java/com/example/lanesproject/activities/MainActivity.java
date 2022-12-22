@@ -28,13 +28,14 @@ import com.example.lanesproject.managers.StepManager;
 public class MainActivity extends AppCompatActivity {
 
     private static final String SP_KEY_GAME_MANAGER = "SP_KEY_GAME_MANAGER";
+    private int ASTEROID_IMAGE_ID;
+    private int PORTAL_IMAGE_ID;
 
     private GameManager gameManager;
     boolean isHitThisTime = false;
     boolean isInPortalThisTime = false;
 
     private ImageView[][] asteroids;
-    private ImageView[][] portals;
     private ImageView leftBtn;
     private ImageView rightBtn;
     private ImageView spaceship;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 gameManager.spawnAsteroid();
             if ( gameManager.hasSpawnPortal())
                 gameManager.spawnPortal();
-            updateScreen();
+            updateMatAndScore();
             checkForHit();
         }
     };
@@ -68,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
         initViews();
 
         gameManager = new GameManager(getIntent().getExtras().getBoolean("isLevelEasy"));
-        updateScreen();
+        updateMatAndScore();
         this.username = getIntent().getExtras().getString("username");
         this.gameThread = new Thread(gameRunnable);
         gameThread.run();
-        updateScreen();
+        updateMatAndScore();
     }
 
     private void checkForHit() {
@@ -85,9 +86,7 @@ public class MainActivity extends AppCompatActivity {
         if ( !this.isHitThisTime && gameManager.isHit()){
             gameManager.hitAsteroid();
             // also - remove 1 engine
-            for( int i = 2; i >= gameManager.getLives(); i -- ){
-                gameEngines[i].setVisibility(gameEngines[i].INVISIBLE);
-            }
+            placeEnginesOnScreen();
             vibrate();
             toast("WE GOT HIT");
             isHitThisTime = true;
@@ -101,23 +100,34 @@ public class MainActivity extends AppCompatActivity {
                 }
                 this.gameManager.setPaused(false);
 
+                // pass player to intent
                 Player player = new Player(
                         this.username,
                         this.gameManager.getScore(),
                         LocationManager.getInstance().getLongitude(),
                         LocationManager.getInstance().getLatitude()
                 );
+                // check score
                 if ( gameManager.isInHighScore(player)){
+                    // add to highscore
                     this.gameManager.addToHighScore(player);
                 }
+                // save game data
                 String gameManagerJson = GsonManager.getInstance().toGson(this.gameManager);
                 GsonManager.getInstance().putString(SP_KEY_GAME_MANAGER, gameManagerJson);
 
+                // call score intent
                 callScoreIntent();
             }
         }
         if ( !this.isInPortalThisTime && gameManager.isInPortal()){
             this.gameManager.addToScore(100);
+        }
+    }
+
+    private void placeEnginesOnScreen() {
+        for( int i = 2; i >= gameManager.getLives(); i -- ){
+            gameEngines[i].setVisibility(gameEngines[i].INVISIBLE);
         }
     }
 
@@ -137,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findViews() {
+        ASTEROID_IMAGE_ID = R.drawable.asteroid;
+        PORTAL_IMAGE_ID = R.drawable.ic_portal;
+
         leftBtn = (ImageView) findViewById(R.id.leftBtn);
         rightBtn = (ImageView) findViewById(R.id.rightBtn);
         spaceship = (ImageView) findViewById(R.id.spaceship);
@@ -161,19 +174,7 @@ public class MainActivity extends AppCompatActivity {
                 {(ImageView) findViewById(R.id.Asteroid101),(ImageView) findViewById(R.id.Asteroid102),(ImageView) findViewById(R.id.Asteroid103),(ImageView) findViewById(R.id.Asteroid104),(ImageView) findViewById(R.id.Asteroid105) },
                 {(ImageView) findViewById(R.id.Asteroid111),(ImageView) findViewById(R.id.Asteroid112),(ImageView) findViewById(R.id.Asteroid113),(ImageView) findViewById(R.id.Asteroid114),(ImageView) findViewById(R.id.Asteroid115) },
         };
-        portals = new ImageView[][]{
-                {(ImageView) findViewById(R.id.Portal11),(ImageView) findViewById(R.id.Portal12),(ImageView) findViewById(R.id.Portal13),(ImageView) findViewById(R.id.Portal14),(ImageView) findViewById(R.id.Portal15) },
-                {(ImageView) findViewById(R.id.Portal21),(ImageView) findViewById(R.id.Portal22),(ImageView) findViewById(R.id.Portal23),(ImageView) findViewById(R.id.Portal24),(ImageView) findViewById(R.id.Portal25) },
-                {(ImageView) findViewById(R.id.Portal31),(ImageView) findViewById(R.id.Portal32),(ImageView) findViewById(R.id.Portal33),(ImageView) findViewById(R.id.Portal34),(ImageView) findViewById(R.id.Portal35) },
-                {(ImageView) findViewById(R.id.Portal41),(ImageView) findViewById(R.id.Portal42),(ImageView) findViewById(R.id.Portal43),(ImageView) findViewById(R.id.Portal44),(ImageView) findViewById(R.id.Portal45) },
-                {(ImageView) findViewById(R.id.Portal51),(ImageView) findViewById(R.id.Portal52),(ImageView) findViewById(R.id.Portal53),(ImageView) findViewById(R.id.Portal54),(ImageView) findViewById(R.id.Portal55) },
-                {(ImageView) findViewById(R.id.Portal61),(ImageView) findViewById(R.id.Portal62),(ImageView) findViewById(R.id.Portal63),(ImageView) findViewById(R.id.Portal64),(ImageView) findViewById(R.id.Portal65) },
-                {(ImageView) findViewById(R.id.Portal71),(ImageView) findViewById(R.id.Portal72),(ImageView) findViewById(R.id.Portal73),(ImageView) findViewById(R.id.Portal74),(ImageView) findViewById(R.id.Portal75) },
-                {(ImageView) findViewById(R.id.Portal81),(ImageView) findViewById(R.id.Portal82),(ImageView) findViewById(R.id.Portal83),(ImageView) findViewById(R.id.Portal84),(ImageView) findViewById(R.id.Portal85) },
-                {(ImageView) findViewById(R.id.Portal91),(ImageView) findViewById(R.id.Portal92),(ImageView) findViewById(R.id.Portal93),(ImageView) findViewById(R.id.Portal94),(ImageView) findViewById(R.id.Portal95) },
-                {(ImageView) findViewById(R.id.Portal101),(ImageView) findViewById(R.id.Portal102),(ImageView) findViewById(R.id.Portal103),(ImageView) findViewById(R.id.Portal104),(ImageView) findViewById(R.id.Portal105) },
-                {(ImageView) findViewById(R.id.Portal111),(ImageView) findViewById(R.id.Portal112),(ImageView) findViewById(R.id.Portal113),(ImageView) findViewById(R.id.Portal114),(ImageView) findViewById(R.id.Portal115) },
-        };
+
         gameEngines = new ImageView[]{
                 (ImageView) findViewById(R.id.gameImgEngine1),
                 (ImageView) findViewById(R.id.gameImgEngine2),
@@ -183,12 +184,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void moveSpaceShip(int toward){
         gameManager.changeLocation(toward);
+        placeSpacehipOnScreen();
+        checkForHit();
+    }
 
-        // I would like to have the movement by transitioning
-        // this.spaceshipLeft = gameManager.getLocation() * 350;
-        // spaceships[1].setTranslationX(this.spaceshipLeft);
-        // but since we have not learned it then
-
+    private void placeSpacehipOnScreen(){
         int index = gameManager.getLocation() + 2;
         for(int i = 0 ; i < gameManager.getMat()[0].length; i ++ ){
             if (i == index)
@@ -196,79 +196,91 @@ public class MainActivity extends AppCompatActivity {
             else
                 this.spaceships[i].setVisibility(View.INVISIBLE);
         }
-
-        checkForHit();
     }
+
     private void initViews() {
 
         if ( !(boolean) getIntent().getExtras().getBoolean("isSensorMode")){
 
+            // show buttons
             this.leftBtn.setVisibility(this.leftBtn.VISIBLE);
             this.rightBtn.setVisibility(this.rightBtn.VISIBLE);
 
             this.leftBtn.setOnClickListener( v -> {
                 this.moveSpaceShip(-1);
-
             });
             this.rightBtn.setOnClickListener( v -> {
                 this.moveSpaceShip(1);
             });
+            // stop motion sensor
+            if ( StepManager.getInstance() != null) StepManager.getInstance().stop();
         }else{
+            // hide buttons
             this.leftBtn.setVisibility(this.leftBtn.INVISIBLE);
             this.rightBtn.setVisibility(this.rightBtn.INVISIBLE);
 
+            // init first time
             StepManager.init(this, new Callback_steps() {
                 @Override
                 public void stepX(int toward) {
                     moveSpaceShip(toward);
                 }
-
                 @Override
                 public void stepY() {
                     gameManager.speedUp(5);
                 }
             });
+            // start motion sensor
             StepManager.getInstance().start();
         }
 
     }
 
-    private void updateScreen(){
+    private void updateMatAndScore(){
         // this.gameManager.printMat();
         // update mat
         int[][] mat = gameManager.getMat();
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[0].length; j++) {
                 ImageView asteroid = this.asteroids[i][j];
+
+                // the image visibility (mostly an asteroid)
                 boolean isVisible = asteroid.getVisibility() == asteroid.VISIBLE;
+
+                // check for an asteroid
                 boolean isVisibleOnMat = mat[i][j] == 1;
                 if ( !isVisibleOnMat && isVisible || isVisibleOnMat && !isVisible){
+                    // set to be an asteroid image
+                    asteroid.setImageResource(ASTEROID_IMAGE_ID);
+
                     if ( !isVisible ) asteroid.setVisibility(asteroid.VISIBLE);
                     else if ( isVisible ) asteroid.setVisibility(asteroid.INVISIBLE);
                 }
-                ImageView portal = this.portals[i][j];
-                isVisible = portal.getVisibility() == portal.VISIBLE;
+                // check for a portal
                 isVisibleOnMat = mat[i][j] == -1;
                 if ( !isVisibleOnMat && isVisible || isVisibleOnMat && !isVisible){
-                    if ( !isVisible ) portal.setVisibility(portal.VISIBLE);
-                    else if ( isVisible ) portal.setVisibility(portal.INVISIBLE);
+                    // set to be a portal image
+                    asteroid.setImageResource(PORTAL_IMAGE_ID);
+
+                    if ( !isVisible ) asteroid.setVisibility(asteroid.VISIBLE); // silence the code
+                    else if ( isVisible ) asteroid.setVisibility(asteroid.INVISIBLE);
                 }
+
+
             }
         }
         ((TextView) findViewById(R.id.score)).setText("" + gameManager.getScore());
     }
     private void callScoreIntent() {
         Intent intent = new Intent(this, ScoreActivity.class);
-
         setIntentExtras(intent);
-
         startActivity(intent);
         finish();
     }
 
     private void setIntentExtras(Intent intent){
         intent.putExtra("username", this.username);
-
+        // set players in intent
         for(int i = 0 ; i < 5 ; i ++ ){
             intent.putExtra(String.format("Player%d", i+1), GsonManager.getInstance().toGson(this.gameManager.gethighScore().get(i)));
         }
@@ -282,8 +294,11 @@ public class MainActivity extends AppCompatActivity {
             this.gameManager.setPaused(true);
         }
 
+        // save game data
         String gameManagerJson = GsonManager.getInstance().toGson(this.gameManager);
         GsonManager.getInstance().putString(SP_KEY_GAME_MANAGER, gameManagerJson);
+
+        // stops the game
         this.gameManager = null;
         this.gameThread.interrupt();
         try {
@@ -292,45 +307,46 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         this.gameThread = null;
+
+        // stop the background running services
         SoundManager.getInstance().stopMainSound();
-        StepManager.getInstance().stop();
+        if ( StepManager.getInstance() != null)StepManager.getInstance().stop();
 
     }
     @Override
     public void onResume(){
         super.onResume();
         // resume thread
-        // reset
+        // in case of reset uncomment this-
 //        String gameManagerJson = GsonManager.getInstance().toGson(this.gameManager);
 //        GsonManager.getInstance().putString(SP_KEY_GAME_MANAGER, "");
+
+        // load game data
         String gameManagerString = GsonManager.getInstance().getString(SP_KEY_GAME_MANAGER, "");
         if ( gameManagerString.equals("")) return;
         GameManager tempGM = GsonManager.getInstance().fromJson(gameManagerString, GameManager.class);
         if ( this.gameManager != null ){
             this.gameManager.sethighScore(tempGM.gethighScore());
         }
+
+        // if the game is not paused then OnResume is called after OnStart
         if (!tempGM.isPaused())return;
+
+        // else, we need to load everything from the file
         this.gameManager = tempGM;
         if ( this.gameThread == null ){
             this.gameThread = new Thread(this.gameRunnable);
             this.gameThread.run();
+            // start the sound again
             SoundManager.getInstance().startMainSound(this, R.raw.main);
         }
-        Log.d("GameManager: ", this.gameManager.toString());
 
-        // update spaceship place
-        int index = gameManager.getLocation() + 2;
-        for(int i = 0 ; i < gameManager.getMat()[0].length; i ++ ){
-            if (i == index)
-                this.spaceships[i].setVisibility(View.VISIBLE);
-            else
-                this.spaceships[i].setVisibility(View.INVISIBLE);
-        }
-        // update engines
-        for( int i = 2; i >= gameManager.getLives(); i -- ){
-            gameEngines[i].setVisibility(gameEngines[i].INVISIBLE);
-        }
-        StepManager.getInstance().start();
-        updateScreen();
+        placeSpacehipOnScreen();
+        placeEnginesOnScreen();
+        updateMatAndScore();
+        
+        // resume with the accelerometer
+        if ( StepManager.getInstance() != null)StepManager.getInstance().start();
+        
     }
 }

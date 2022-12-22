@@ -31,10 +31,6 @@ public class MenuActivity extends AppCompatActivity {
         initViews();
         initManagers();
         SoundManager.getInstance().startMainSound(this, R.raw.main);
-
-
-        // temporary
-//        LocationManager.getInstance(this).getLastLocation(this, MainActivity.this);
     }
     private void initManagers() {
         SoundManager.init();
