@@ -13,14 +13,17 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lanesproject.R;
+import com.example.lanesproject.callbacks.Callback_steps;
 import com.example.lanesproject.entities.Player;
 import com.example.lanesproject.managers.GameManager;
 import com.example.lanesproject.managers.GsonManager;
 import com.example.lanesproject.managers.LocationManager;
 import com.example.lanesproject.managers.SoundManager;
+import com.example.lanesproject.managers.StepManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
     private GameManager gameManager;
     boolean isHitThisTime = false;
+    boolean isInPortalThisTime = false;
 
     private ImageView[][] asteroids;
+    private ImageView[][] portals;
     private ImageView leftBtn;
     private ImageView rightBtn;
     private ImageView spaceship;
@@ -47,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
             gameManager.makeProgress();
             if ( gameManager.hasSpawn() )
                 gameManager.spawnAsteroid();
+            if ( gameManager.hasSpawnPortal())
+                gameManager.spawnPortal();
             updateScreen();
             checkForHit();
         }
@@ -68,11 +75,12 @@ public class MainActivity extends AppCompatActivity {
         updateScreen();
     }
 
-
-
     private void checkForHit() {
         if ( gameManager.isHit()){
             SoundManager.getInstance().makeSoundNotInLoop(this, R.raw.crash);
+        }
+        if (gameManager.isInPortal()){
+            SoundManager.getInstance().makeSoundNotInLoop(this, R.raw.whoosh);
         }
         if ( !this.isHitThisTime && gameManager.isHit()){
             gameManager.hitAsteroid();
@@ -107,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
 
                 callScoreIntent();
             }
+        }
+        if ( !this.isInPortalThisTime && gameManager.isInPortal()){
+            this.gameManager.addToScore(100);
         }
     }
 
@@ -150,7 +161,19 @@ public class MainActivity extends AppCompatActivity {
                 {(ImageView) findViewById(R.id.Asteroid101),(ImageView) findViewById(R.id.Asteroid102),(ImageView) findViewById(R.id.Asteroid103),(ImageView) findViewById(R.id.Asteroid104),(ImageView) findViewById(R.id.Asteroid105) },
                 {(ImageView) findViewById(R.id.Asteroid111),(ImageView) findViewById(R.id.Asteroid112),(ImageView) findViewById(R.id.Asteroid113),(ImageView) findViewById(R.id.Asteroid114),(ImageView) findViewById(R.id.Asteroid115) },
         };
-
+        portals = new ImageView[][]{
+                {(ImageView) findViewById(R.id.Portal11),(ImageView) findViewById(R.id.Portal12),(ImageView) findViewById(R.id.Portal13),(ImageView) findViewById(R.id.Portal14),(ImageView) findViewById(R.id.Portal15) },
+                {(ImageView) findViewById(R.id.Portal21),(ImageView) findViewById(R.id.Portal22),(ImageView) findViewById(R.id.Portal23),(ImageView) findViewById(R.id.Portal24),(ImageView) findViewById(R.id.Portal25) },
+                {(ImageView) findViewById(R.id.Portal31),(ImageView) findViewById(R.id.Portal32),(ImageView) findViewById(R.id.Portal33),(ImageView) findViewById(R.id.Portal34),(ImageView) findViewById(R.id.Portal35) },
+                {(ImageView) findViewById(R.id.Portal41),(ImageView) findViewById(R.id.Portal42),(ImageView) findViewById(R.id.Portal43),(ImageView) findViewById(R.id.Portal44),(ImageView) findViewById(R.id.Portal45) },
+                {(ImageView) findViewById(R.id.Portal51),(ImageView) findViewById(R.id.Portal52),(ImageView) findViewById(R.id.Portal53),(ImageView) findViewById(R.id.Portal54),(ImageView) findViewById(R.id.Portal55) },
+                {(ImageView) findViewById(R.id.Portal61),(ImageView) findViewById(R.id.Portal62),(ImageView) findViewById(R.id.Portal63),(ImageView) findViewById(R.id.Portal64),(ImageView) findViewById(R.id.Portal65) },
+                {(ImageView) findViewById(R.id.Portal71),(ImageView) findViewById(R.id.Portal72),(ImageView) findViewById(R.id.Portal73),(ImageView) findViewById(R.id.Portal74),(ImageView) findViewById(R.id.Portal75) },
+                {(ImageView) findViewById(R.id.Portal81),(ImageView) findViewById(R.id.Portal82),(ImageView) findViewById(R.id.Portal83),(ImageView) findViewById(R.id.Portal84),(ImageView) findViewById(R.id.Portal85) },
+                {(ImageView) findViewById(R.id.Portal91),(ImageView) findViewById(R.id.Portal92),(ImageView) findViewById(R.id.Portal93),(ImageView) findViewById(R.id.Portal94),(ImageView) findViewById(R.id.Portal95) },
+                {(ImageView) findViewById(R.id.Portal101),(ImageView) findViewById(R.id.Portal102),(ImageView) findViewById(R.id.Portal103),(ImageView) findViewById(R.id.Portal104),(ImageView) findViewById(R.id.Portal105) },
+                {(ImageView) findViewById(R.id.Portal111),(ImageView) findViewById(R.id.Portal112),(ImageView) findViewById(R.id.Portal113),(ImageView) findViewById(R.id.Portal114),(ImageView) findViewById(R.id.Portal115) },
+        };
         gameEngines = new ImageView[]{
                 (ImageView) findViewById(R.id.gameImgEngine1),
                 (ImageView) findViewById(R.id.gameImgEngine2),
@@ -177,17 +200,41 @@ public class MainActivity extends AppCompatActivity {
         checkForHit();
     }
     private void initViews() {
-        this.leftBtn.setOnClickListener( v -> {
-            this.moveSpaceShip(-1);
 
-        });
-        this.rightBtn.setOnClickListener( v -> {
-            this.moveSpaceShip(1);
-        });
+        if ( !(boolean) getIntent().getExtras().getBoolean("isSensorMode")){
+
+            this.leftBtn.setVisibility(this.leftBtn.VISIBLE);
+            this.rightBtn.setVisibility(this.rightBtn.VISIBLE);
+
+            this.leftBtn.setOnClickListener( v -> {
+                this.moveSpaceShip(-1);
+
+            });
+            this.rightBtn.setOnClickListener( v -> {
+                this.moveSpaceShip(1);
+            });
+        }else{
+            this.leftBtn.setVisibility(this.leftBtn.INVISIBLE);
+            this.rightBtn.setVisibility(this.rightBtn.INVISIBLE);
+
+            StepManager.init(this, new Callback_steps() {
+                @Override
+                public void stepX(int toward) {
+                    moveSpaceShip(toward);
+                }
+
+                @Override
+                public void stepY() {
+                    gameManager.speedUp(5);
+                }
+            });
+            StepManager.getInstance().start();
+        }
+
     }
 
     private void updateScreen(){
-//        this.gameManager.printMat();
+        // this.gameManager.printMat();
         // update mat
         int[][] mat = gameManager.getMat();
         for (int i = 0; i < mat.length; i++) {
@@ -199,8 +246,16 @@ public class MainActivity extends AppCompatActivity {
                     if ( !isVisible ) asteroid.setVisibility(asteroid.VISIBLE);
                     else if ( isVisible ) asteroid.setVisibility(asteroid.INVISIBLE);
                 }
+                ImageView portal = this.portals[i][j];
+                isVisible = portal.getVisibility() == portal.VISIBLE;
+                isVisibleOnMat = mat[i][j] == -1;
+                if ( !isVisibleOnMat && isVisible || isVisibleOnMat && !isVisible){
+                    if ( !isVisible ) portal.setVisibility(portal.VISIBLE);
+                    else if ( isVisible ) portal.setVisibility(portal.INVISIBLE);
+                }
             }
         }
+        ((TextView) findViewById(R.id.score)).setText("" + gameManager.getScore());
     }
     private void callScoreIntent() {
         Intent intent = new Intent(this, ScoreActivity.class);
@@ -238,6 +293,7 @@ public class MainActivity extends AppCompatActivity {
         }
         this.gameThread = null;
         SoundManager.getInstance().stopMainSound();
+        StepManager.getInstance().stop();
 
     }
     @Override
@@ -262,6 +318,7 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.d("GameManager: ", this.gameManager.toString());
 
+        // update spaceship place
         int index = gameManager.getLocation() + 2;
         for(int i = 0 ; i < gameManager.getMat()[0].length; i ++ ){
             if (i == index)
@@ -269,7 +326,11 @@ public class MainActivity extends AppCompatActivity {
             else
                 this.spaceships[i].setVisibility(View.INVISIBLE);
         }
-
+        // update engines
+        for( int i = 2; i >= gameManager.getLives(); i -- ){
+            gameEngines[i].setVisibility(gameEngines[i].INVISIBLE);
+        }
+        StepManager.getInstance().start();
         updateScreen();
     }
 }

@@ -8,6 +8,454 @@
     tools:context=".activities.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+            <ImageView
+                android:id="@+id/Portal11"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal12"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal13"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal14"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal15"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.099">
+            <ImageView
+                android:id="@+id/Portal21"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal22"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal23"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal24"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal25"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.198">
+            <ImageView
+                android:id="@+id/Portal31"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal32"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal33"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal34"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal35"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.29700000000000004">
+            <ImageView
+                android:id="@+id/Portal41"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal42"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal43"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal44"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal45"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.396">
+            <ImageView
+                android:id="@+id/Portal51"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal52"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal53"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal54"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal55"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.495">
+            <ImageView
+                android:id="@+id/Portal61"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal62"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal63"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal64"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal65"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5940000000000001">
+            <ImageView
+                android:id="@+id/Portal71"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal72"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal73"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal74"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal75"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6930000000000001">
+            <ImageView
+                android:id="@+id/Portal81"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal82"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal83"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal84"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal85"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.792">
+            <ImageView
+                android:id="@+id/Portal91"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal92"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal93"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal94"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal95"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.891">
+            <ImageView
+                android:id="@+id/Portal101"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal102"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal103"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal104"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal105"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.99">
+            <ImageView
+                android:id="@+id/Portal111"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal112"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal113"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal114"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+            <ImageView
+                android:id="@+id/Portal115"
+                android:layout_width="134dp"
+                android:layout_height="66dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_portal" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="211dp"
         android:layout_height="62dp"
@@ -52,6 +500,36 @@
             app:srcCompat="@drawable/engine"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteY="0dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="111dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/home_border"
+        android:elevation="20dp"
+        android:paddingTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="106dp"
+            android:layout_height="52dp"
+            android:padding="5dp"
+            android:paddingStart="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout

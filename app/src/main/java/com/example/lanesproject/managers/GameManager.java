@@ -9,9 +9,11 @@ import java.util.Collections;
 public class GameManager {
 
     private static int HIGHSCORE_SIZE = 5;
-    private static int DELAY = 500;
     private static int SPAWN_CYCLE = 3;
     private static int MAX = 1;
+    private static int PORTAL_CYCLE = 21;
+    public static int DELAY = 500;
+    public static int SPEED_STEPS = 0;
 
     private int currentCycle = 0;
     private int location = 0;
@@ -40,7 +42,7 @@ public class GameManager {
         this.isLevelEasy = isLevelEasy;
         if ( !isLevelEasy ){
             MAX = 2;
-            SPAWN_CYCLE = 1;
+            SPAWN_CYCLE = 2;
         }
         for (int i = 0; i < 5; i++) {
             highScore.add(new Player("Hello", 0, 0.0, 0.0));
@@ -57,6 +59,14 @@ public class GameManager {
             hit = hit || (this.location == j && this.asteroidsMat[this.asteroidsMat.length-1][i] == 1);
         }
         return hit;
+    }
+
+    public boolean isInPortal(){
+        boolean isIn = false;
+        for(int i = 0, j = -2; i < this.asteroidsMat[0].length; i++, j++){
+            isIn = isIn || (this.location == j && this.asteroidsMat[this.asteroidsMat.length-1][i] == -1);
+        }
+        return isIn;
     }
 
     public ArrayList<Player> gethighScore() {
@@ -100,22 +110,36 @@ public class GameManager {
         for(int i = 0 ; i < asteroidsMat[0].length ; i ++ ){
             this.asteroidsMat[0][i] = 0;
         }
+        if ( GameManager.SPEED_STEPS != 0 ){
+            GameManager.SPEED_STEPS -= 1;
+            if ( GameManager.SPEED_STEPS == 0)
+                GameManager.DELAY = 500;
+        }
 
-        if ( this.currentCycle == this.SPAWN_CYCLE ) {
+        if ( this.currentCycle == PORTAL_CYCLE ) {
             this.currentCycle = 0;
         }else { this.currentCycle ++; }
     }
-    public boolean hasSpawn() { return this.currentCycle == 0; }
+    public boolean hasSpawn() { return this.currentCycle % this.SPAWN_CYCLE == 0; }
+    public boolean hasSpawnPortal() { return this.currentCycle == 0; }
+
     public void spawnAsteroid(){
         for (int i = 0; i < MAX; i++) {
             int laneNum = (int)(Math.random() * asteroidsMat[0].length);
-            if (this.asteroidsMat[0][laneNum] == 1){
+            if (this.asteroidsMat[0][laneNum] != 0) { // row is not clear
                 i--;
             }else{
                 this.asteroidsMat[0][laneNum] = 1;
             }
         }
+    }
 
+    public void spawnPortal(){
+        int laneNum =0;
+        do{
+            laneNum = (int)(Math.random() * asteroidsMat[0].length);
+        }while (this.asteroidsMat[0][laneNum] != 0);
+        this.asteroidsMat[0][laneNum] = -1; // portal indication is -1
     }
 
     public boolean isPaused() {
@@ -156,12 +180,14 @@ public class GameManager {
             matStr += "]";
             if ( i != asteroidsMat.length - 1)
                 matStr += ",";
-
         }
         matStr += "]";
         return matStr;
     }
-
+    public void speedUp(int amount){
+        GameManager.SPEED_STEPS = amount;
+        GameManager.DELAY /= 2;
+    }
     public boolean isInHighScore(Player player){
         if (this.highScore.size() <= HIGHSCORE_SIZE){
             return true;
