@@ -307,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
         this.gameThread = null;
 
         // stop the background running services
-        SoundManager.getInstance().stopMainSound();
+        SoundManager.getInstance().stopAllSounds();
         if ( StepManager.getInstance() != null)StepManager.getInstance().stop();
     }
     @Override
